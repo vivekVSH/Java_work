@@ -25,6 +25,22 @@ public class seven {
             p--;
         }
     }
+
+    public static void printPyramid(int row) {
+        char ch = 'A';
+        for (int i = 1; i <= row; i++) {
+            for (int j = 1; j <= row - i; j++) {
+                System.out.print(" ");
+            }
+
+            for (int j = 1; j <= i; j++) {
+                System.out.print(ch + " ");
+                ch++;
+            }
+            System.out.println();
+        }
+
+    }
     public static void main(String[] args) {
         //merge two array and sort them in assending order
         int[] nums1 = {2, 3, 5, 0, 0, 0, 0}; // Sorted array with m=3 valid elements
@@ -41,5 +57,10 @@ public class seven {
             System.out.print(num + " ");
         }
         System.out.println();
+        System.out.println();
+
+        //print pyramid of charecter
+        int row = 5;
+        printPyramid(row);
     }
 }
