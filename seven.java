@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class seven {
 
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
@@ -41,6 +43,47 @@ public class seven {
         }
 
     }
+
+    public static boolean elementCheck(int[] array1, int[] array2){
+        Set<Object> set1 = new HashSet<>();
+        Set<Object> set2 = new HashSet<>();
+
+        for(int num : array1){
+            set1.add(num);
+        }
+
+        for(int num : array2){
+            set2.add(num);
+        }
+
+        return set1.equals(set2);
+    }
+
+    public static int[] findIntersectionValues(int[] nums1, int[] nums2) {
+        // Create sets for nums1 and nums2 to store unique elements
+        Set<Integer> set1 = new HashSet<>();
+        Set<Integer> set2 = new HashSet<>();
+        
+        // Populate sets
+        for (int num : nums1) set1.add(num);
+        for (int num : nums2) set2.add(num);
+        
+        // Count indices where nums1[i] exists in nums2
+        int answer1 = 0;
+        for (int num : nums1) {
+            if (set2.contains(num)) answer1++;
+        }
+        
+        // Count indices where nums2[i] exists in nums1
+        int answer2 = 0;
+        for (int num : nums2) {
+            if (set1.contains(num)) answer2++;
+        }
+        
+        // Return the result as an array
+        return new int[] {answer1, answer2};
+    }
+
     public static void main(String[] args) {
         //merge two array and sort them in assending order
         int[] nums1 = {2, 3, 5, 0, 0, 0, 0}; // Sorted array with m=3 valid elements
@@ -62,5 +105,21 @@ public class seven {
         //print pyramid of charecter
         int row = 5;
         printPyramid(row);
+        System.out.println();
+
+        //remove dublicate element in arrays and check both array are same or not
+        int[] a1 = {1, 2, 3, 2, 1};
+        int[] a2 = {1, 2, 3};
+        int[] a3 = {1, 2, 3, 4};
+
+        System.out.println(elementCheck(a1 ,a2));
+        System.out.println(elementCheck(a1 ,a3));
+        System.out.println();
+
+        //Find Common Elements Between Two Arrays and their counts
+        int[] numsd = {2, 3, 2};
+        int[] numss = {1, 2};
+        int[] result1 = findIntersectionValues(numsd, numss);
+        System.out.println("Test : " + Arrays.toString(result1));
     }
 }
