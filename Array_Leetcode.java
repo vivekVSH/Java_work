@@ -50,7 +50,12 @@ public class Array_Leetcode {
     }
 
     public static boolean palandrom(String str){
-
+        str = str.toLowerCase();
+        String rev = "";
+        for(int i=str.length() - 1; i>=0; i--){
+            rev = rev + str.charAt(i);
+        }
+        return rev.equals(str);
     }
     public static void main(String[] args){
         //when buy and sell stock
@@ -67,6 +72,7 @@ public class Array_Leetcode {
         System.out.println(checkAnagram(s,t));
 
         //check string is palandrom or not
-        
+        String str = "vivek";
+        System.out.println(palandrom(str));
     }
 }
