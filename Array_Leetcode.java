@@ -57,6 +57,17 @@ public class Array_Leetcode {
         }
         return rev.equals(str);
     }
+
+    public static int maxSubArray(int[] nums) {
+        int maxSum = nums[0];
+        int currSum = nums[0];
+
+        for(int i=1; i<nums.length; i++){
+            currSum = Math.max(nums[i], currSum+nums[i]);
+            maxSum = Math.max(maxSum,currSum);
+        }
+        return maxSum;
+    }
     public static void main(String[] args){
         //when buy and sell stock
         int[] price = {7,1,5,3,6,4};
@@ -74,5 +85,9 @@ public class Array_Leetcode {
         //check string is palandrom or not
         String str = "vivek";
         System.out.println(palandrom(str));
+
+        //print the max sum in the array
+        int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
+        System.out.println(maxSubArray(nums));
     }
 }
