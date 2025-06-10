@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+import java.math.*;
 
 public class LeetCode_Array2 {
 
@@ -104,6 +105,34 @@ public class LeetCode_Array2 {
         return result;
     }
 
+    public static int maxDifference(String s){
+        int[] freq = new int[26];
+        for(char c : s.toCharArray()){
+            freq[c - 'a']++;
+        }
+
+        ArrayList<Integer> oddFreq = new ArrayList<>();
+        ArrayList<Integer> evenFreq = new ArrayList<>();
+
+        for(int f : freq){
+            if(f > 0){
+                if(f % 2 == 1){
+                    oddFreq.add(f);
+                }else{
+                    evenFreq.add(f);
+                }
+            }
+        }
+        
+        int maxDiff = Integer.MIN_VALUE;
+        for(int odd : oddFreq){
+            for(int even : evenFreq){
+                maxDiff = Math.max(maxDiff, odd - even);
+            }
+        }
+        return maxDiff;
+    }
+
     public static void main(String[] args){
 
         String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
@@ -136,6 +165,10 @@ public class LeetCode_Array2 {
         //basic calculator
         String s = " 2-1 + 2 ";
         System.out.println("Output: " + calculator(s));
+
+        //count max freq of string 
+        String str5 = "aaaaabb";
+        System.out.println(maxDifference(str5));
 
     }
 }
