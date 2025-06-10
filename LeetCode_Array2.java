@@ -64,6 +64,46 @@ public class LeetCode_Array2 {
         }
         return result;
     }
+
+    public static int calculator(String s){
+        Stack<Integer> stack = new Stack<>();
+        int result = 0;
+        int number = 0;
+        int sign = 1;
+
+        for(int i=0; i<s.length(); i++){
+            char c = s.charAt(i);
+            if(Character.isDigit(c)){
+                number = number * 10 + (c - '0');
+            }
+            else if(c == '+'){
+                result = result + sign * number;
+                number = 0;
+                sign = 1;
+            }
+            else if(c == '-'){
+                result = result + sign * number;
+                number = 0;
+                sign = -1;
+            }
+            else if(c == '('){
+                stack.push(result);
+                stack.push(sign);
+                result = 0;
+                sign = 1;
+            }
+            else if(c == ')'){
+                result = result + sign * number;
+                number = 0;
+                result = result * stack.pop();
+                result = result + stack.pop();
+            }
+
+        }
+        result = result + sign * number;
+        return result;
+    }
+
     public static void main(String[] args){
 
         String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
@@ -92,6 +132,10 @@ public class LeetCode_Array2 {
         int[] res = dailyTemperature(temperature);
         System.out.print("Result : " + Arrays.toString(res));
         System.out.println();
+
+        //basic calculator
+        String s = " 2-1 + 2 ";
+        System.out.println("Output: " + calculator(s));
 
     }
 }
