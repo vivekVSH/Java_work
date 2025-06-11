@@ -1,3 +1,4 @@
+//leetcode problem no 278
 class VersionControl {
     private int firstBad;
 
@@ -34,6 +35,46 @@ public class Binary_Search_Leetcode extends VersionControl {
 
     }
 
+    //leetcode problem no 35
+    public int searchInsert(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (nums[mid] == target) {
+                return mid; // Target found
+            } else if (nums[mid] < target) {
+                left = mid + 1; // Search right half
+            } else {
+                right = mid - 1; // Search left half
+            }
+        }
+
+        // If not found, left is the insertion position
+        return left;
+    }
+
+    //leetcode problem no 162
+    public int findPeakElement(int[] nums) {
+        int left = 0, right = nums.length - 1;
+
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+
+            if (nums[mid] > nums[mid + 1]) {
+                // Peak is on the left side (including mid)
+                right = mid;
+            } else {
+                // Peak is on the right side
+                left = mid + 1;
+            }
+        }
+
+        // left == right is the peak index
+        return left;
+    }
+
     public static void main(String[] args) {
         int n = 5;
         int bad = 4;
@@ -42,5 +83,9 @@ public class Binary_Search_Leetcode extends VersionControl {
         int firstBad = solution.firstBadVersion(n);
 
         System.out.println("First bad version is: " + firstBad);
+
+        
+        int[] nums2 = {1, 3, 5, 6};
+        System.out.println(solution.searchInsert(nums2, 2));
     }
 }
