@@ -55,6 +55,21 @@ public class Two_Pointers {
 
         return arass;
     }
+
+    //check the string is anagram
+    public static boolean checkAnagram(String s1, String s2){
+        if(s1.length() != s2.length()){
+            return false;
+        }
+
+        char[] array1 = s1.toCharArray();
+        char[] array2 = s2.toCharArray();
+
+        Arrays.sort(array1);
+        Arrays.sort(array2);
+
+        return array1.equals(array2);
+    }
     public static void main(String[] args){
         //remove dublicate element from sorted array
         int[] arr = {1,1,4,4,5,6,7,7,8,9,9};
@@ -76,5 +91,16 @@ public class Two_Pointers {
         //sort the square of every element in the array
         int[] nums = {-4,-1,0,3,10};
         System.out.print(Arrays.toString(squareNum(nums)));
+        System.out.println(); 
+
+        //anagram problem
+        String s1 = "listen";
+        String s2 = "silent";
+
+        if (checkAnagram(s1, s2)) {
+            System.out.println("Yes, they are anagrams.");
+        } else {
+            System.out.println("No, they are not anagrams.");
+        }
     }
 }
