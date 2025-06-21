@@ -70,6 +70,25 @@ public class Two_Pointers {
 
         return array1.equals(array2);
     }
+
+    //sort colour in assending order
+    public static void sortColour(int[] nums){
+        int count0 = 0; int  count1 = 0; int  count2 = 0;
+        for(int num : nums){
+            if(num == 0){
+                count0++;
+            }else if(num == 1){
+                count1++;
+            }else{
+                count2++;
+            }
+        }
+
+        int index = 0;
+        while (count0-- > 0) nums[index++] = 0;
+        while (count1-- > 0) nums[index++] = 1;
+        while (count2-- > 0) nums[index++] = 2;
+    }
     public static void main(String[] args){
         //remove dublicate element from sorted array
         int[] arr = {1,1,4,4,5,6,7,7,8,9,9};
@@ -102,5 +121,9 @@ public class Two_Pointers {
         } else {
             System.out.println("No, they are not anagrams.");
         }
+
+        int[] nums1 = {2,0,2,1,1,0};
+        sortColour(nums1);
+        System.out.print(Arrays.toString(nums1));
     }
 }
