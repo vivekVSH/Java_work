@@ -91,7 +91,40 @@ public class Two_Pointers {
     }
 
     //sliding window problem
-    
+    //two pointer old code 
+    public static boolean twoSum(int[] arr, int target){
+        int n = arr.length;
+        for(int i=0; i<n; i++){
+            for(int j=i+1; j<n; j++){
+                if(arr[i] + arr[j] == target){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    //Logest repeting charecter replacement 
+    public static int charecterReplacement(String s , int k){
+        int[] freq = new int[26];
+        int maxFreq = 0;
+        int left = 0;
+        int result = 0;
+
+        for(int rigth = 0; rigth < s.length(); rigth++){
+            char c = s.charAt(rigth);
+            freq[c - 'A']++;
+            maxFreq = Math.max(maxFreq, freq[c - 'A']);
+            int windowSize = rigth - left + 1;
+            if(windowSize - maxFreq > k){
+                freq[s.charAt(left) - 'A']--;
+                left++;
+            }
+            result  = Math.max(result , rigth - left + 1);
+        }
+        return result;
+    }
+
     public static void main(String[] args){
         //remove dublicate element from sorted array
         int[] arr = {1,1,4,4,5,6,7,7,8,9,9};
@@ -128,5 +161,13 @@ public class Two_Pointers {
         int[] nums1 = {2,0,2,1,1,0};
         sortColour(nums1);
         System.out.print(Arrays.toString(nums1));
+        System.out.println(); 
+
+        //sum of two element 
+        int[] st = {1,4,6,7,8,9};
+        System.out.println(twoSum(st, 13));
+        
+        //max frequency of charecter in window in the repating charecter
+        System.out.println(charecterReplacement("ABAB", 2)); 
     }
 }
