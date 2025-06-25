@@ -89,6 +89,9 @@ public class Two_Pointers {
         while (count1-- > 0) nums[index++] = 1;
         while (count2-- > 0) nums[index++] = 2;
     }
+
+    //sliding window problem
+    
     public static void main(String[] args){
         //remove dublicate element from sorted array
         int[] arr = {1,1,4,4,5,6,7,7,8,9,9};
