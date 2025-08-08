@@ -1,3 +1,4 @@
+import java.util.Random;
 class Solution {
     public boolean isTrionic(int[] nums) {
         int n = nums.length;
