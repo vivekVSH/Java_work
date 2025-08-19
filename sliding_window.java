@@ -17,6 +17,6 @@ public class sliding_window{
     public static void main(String args[]){
         int k = 3;
         int[] arr = {1, 7, 6, 2, 3, 4, 5};
-        System.out.println(slide_wido(arr,k));
+        System.out.println(slide_wido(arr,k));  
     }
 }
